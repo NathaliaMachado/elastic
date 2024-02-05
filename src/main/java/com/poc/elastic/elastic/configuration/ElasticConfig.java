@@ -14,13 +14,6 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 @ComponentScan(basePackages = {"com.poc.elastic.elastic.service"})
 public class ElasticConfig extends AbstractElasticsearchConfiguration {
 
-//    @Override
-//    public ClientConfiguration clientConfiguration() {
-//        return ClientConfiguration.builder()
-//                .connectedTo("localhost:9200")
-//                .build();
-//    }
-
     @Bean
     @Override
     public RestHighLevelClient elasticsearchClient() {

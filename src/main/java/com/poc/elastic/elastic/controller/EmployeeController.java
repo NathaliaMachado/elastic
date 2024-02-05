@@ -5,9 +5,10 @@ import com.poc.elastic.elastic.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/employees")
-//@EnableElasticsearchRepositories(basePackages = "com.poc.elastic.elastic.repository")
 public class EmployeeController {
 
     @Autowired
@@ -18,24 +19,23 @@ public class EmployeeController {
         return service.insert(employee);
     }
 
-//    @GetMapping("/{id}")
-//    public Optional<Employee> getById(@PathVariable String id) {
-//        return Optional.ofNullable(service.getById(id));
-//    }
-//
+    @GetMapping("/{id}")
+    public Optional<Employee> getById(@PathVariable String id) {
+        return Optional.ofNullable(service.getById(id));
+    }
+
     @GetMapping("/findAll")
     public Iterable<Employee> findAll() {
         return service.getEmployees();
     }
-//
-//    @PutMapping("/{id}")
-//    public Employee update(@PathVariable String id, @RequestBody Employee employee) {
-//        employee.setId(id);
-//        return service.update(employee);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public void delete(@PathVariable String id) {
-//        service.delete(id);
-//    }
+
+    @PutMapping("/{id}")
+    public Employee update(@PathVariable String id, @RequestBody Employee employee) {
+        return service.update(employee);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable String id) {
+        service.delete(id);
+    }
 }
